@@ -3,30 +3,37 @@ import './App.css'
 import { Row, Divider, Button } from 'antd';
 import foods from "../../src/foods.json";
 import FoodBox from './components/FoodBox/FoodBox';
-
-
+import AddFoodForm from './components/AddFoodForm/AddFoodForm';
 
 function App() {
-  const [food, setFood]=([foods])
+  const [food, setFood]=useState(foods)
+
+  const handleAddFood = (newFood) =>{
+    const copy = [...food]
+    copy.push(newFood)
+    setFood(copy)
+
+  }
 
   return (
     <div className="App">
+    <h1>Food List</h1>
+    <Divider/>
+    <AddFoodForm handleAddFood={handleAddFood}/>
+    <div className='list-wrapper'>
         {food.map(item=>{
             return (
               <div key={item.name}>
-              <FoodBox food={ {
-                  name: item.name,
-                  calories: item.calories,
+                <FoodBox food={ {
+                    name: item.name,
+                    calories: item.calories,
                     image: item.image,
-                  servings: item.servings
-        }} />
+                    servings: item.servings
+                }} />
               </div>
             )
         })}
-       
-      {/* Display Add Food component here */}
-
-      {/* <Button> Hide Form / Add New Food </Button> */}
+        </div>
 
       {/* Display Search component here */}
 

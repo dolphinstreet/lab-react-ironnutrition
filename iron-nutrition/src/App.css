@@ -6,13 +6,17 @@
 }
 
 
-.App{
+.list-wrapper{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.card {
+.Card {
   padding: 2em;
+}
+
+form {
+  background-color: rgb(76, 94, 129);
 }
 
