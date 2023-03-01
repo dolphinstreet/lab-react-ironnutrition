@@ -8,6 +8,7 @@ function AddFoodForm(props) {
     const [image,setImage]=useState("")
     const [cal,setCal]=useState("")
     const [serve,setServe]=useState("")
+    
     const {handleAddFood} = props
 
     const handleNameChange = (event) =>{

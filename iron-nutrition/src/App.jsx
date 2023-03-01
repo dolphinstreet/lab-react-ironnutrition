@@ -4,6 +4,7 @@ import { Row, Divider, Button } from 'antd';
 import foods from "../../src/foods.json";
 import FoodBox from './components/FoodBox/FoodBox';
 import AddFoodForm from './components/AddFoodForm/AddFoodForm';
+import Search from './components/Search/Search';
 
 function App() {
   const [food, setFood]=useState(foods)
@@ -14,12 +15,27 @@ function App() {
     setFood(copy)
 
   }
+  const filterFoodList = (string) => {
+    let filteredFood;
+    
+    if (string === "") {
+      filteredFood = food;
+    } else {
+      filteredFood = food.filter((item) => {
+        return item.name.toLowerCase().includes(string.toLowerCase())
+      });
+    }
+   
+    setFood(filteredFood);
+  };
 
   return (
     <div className="App">
+
     <h1>Food List</h1>
     <Divider/>
     <AddFoodForm handleAddFood={handleAddFood}/>
+    <Search handleSearch={filterFoodList}/>
     <div className='list-wrapper'>
         {food.map(item=>{
             return (
