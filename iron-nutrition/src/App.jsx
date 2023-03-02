@@ -30,8 +30,6 @@ function App() {
   };
  
   const deleteFood = (nameToDelete)=>{
-    console.log("here")
-    console.log(nameToDelete)
     let notDdeleted=food.filter((item) => {
       return item.name!==nameToDelete
     });
@@ -46,6 +44,7 @@ function App() {
     <AddFoodForm handleAddFood={handleAddFood}/>
     <Search handleSearch={filterFoodList}/>
     <div className='list-wrapper'>
+        {!food.length && <p>No more food, please add some.</p>}
         {food.map(item=>{
             return (
               <div key={item.name}>
