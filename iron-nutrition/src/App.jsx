@@ -28,6 +28,15 @@ function App() {
    
     setFood(filteredFood);
   };
+ 
+  const deleteFood = (nameToDelete)=>{
+    console.log("here")
+    console.log(nameToDelete)
+    let notDdeleted=food.filter((item) => {
+      return item.name!==nameToDelete
+    });
+    setFood(notDdeleted)
+  }
 
   return (
     <div className="App">
@@ -45,7 +54,8 @@ function App() {
                     calories: item.calories,
                     image: item.image,
                     servings: item.servings
-                }} />
+                }}
+                deleteFood={deleteFood} />
               </div>
             )
         })}
