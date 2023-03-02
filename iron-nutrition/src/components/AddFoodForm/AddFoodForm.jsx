@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from 'react'
-import { Divider, Input } from 'antd';
+import { Divider, Input, Button } from 'antd';
 
 // Iteration 4
 function AddFoodForm(props) {
@@ -8,6 +8,7 @@ function AddFoodForm(props) {
     const [image,setImage]=useState("")
     const [cal,setCal]=useState("")
     const [serve,setServe]=useState("")
+    const [form,setForm]=useState(true)
     
     const {handleAddFood} = props
 
@@ -33,9 +34,13 @@ function AddFoodForm(props) {
         }
         handleAddFood(foodToCreate)
     }
-
+const handleShowForm=()=>{
+    setForm(!form)
+}
 
   return (
+    <div>
+    {form &&
     <form onSubmit={handleSubmit}>
       <Divider>Add Food Entry</Divider>
 
@@ -53,6 +58,9 @@ function AddFoodForm(props) {
 
       <button type="submit">Create</button>
     </form>
+    }
+    <Button onClick={handleShowForm}>{form ? "Hide form" : "Show form" }</Button>
+    </div>
   );
 }
 
